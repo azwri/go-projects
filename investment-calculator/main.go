@@ -2,26 +2,18 @@ package main
 
 import (
 	"fmt"
-	"math"
+
+	"github.com/azwri/go-projects/investment-calculator/utils"
 )
 
 func main() {
-	const inflationRate = 2.5
-	var investmentAmount float64
-	var expectedReturnRate float64
-	var years float64
+	investmentAmount := utils.PropmtUser("Investment amount")
+	expectedReturnRate := utils.PropmtUser("Excepted Return Rate")
+	years := utils.PropmtUser("Years")
 
-	fmt.Print("Investment amount: ")
-	fmt.Scan(&investmentAmount)
+	// fv (future value). rfv (real futrue value)
+	fv, rfv := utils.CalculateFutureValues(investmentAmount, expectedReturnRate, years)
 
-	fmt.Print("Excepted Return Rate: ")
-	fmt.Scan(&expectedReturnRate)
-
-	fmt.Print("Years: ")
-	fmt.Scan(&years)
-
-	futureValue := investmentAmount * math.Pow(1+expectedReturnRate/100, years)
-	futureRealValue := futureValue / math.Pow(1+inflationRate/100, years)
-	fmt.Println(futureValue)
-	fmt.Println(futureRealValue)
+	fmt.Println(fv)
+	fmt.Println(rfv)
 }

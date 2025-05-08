@@ -1,32 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"github.com/azwri/go-projects/profit-calculator/utils"
+)
 
 func main() {
 
-	var revenue float64
-	var expenses float64
-	var taxRate float64
+	revenue := utils.PromptUser("Revenue")
+	expenses := utils.PromptUser("Expenses")
+	taxRate := utils.PromptUser("Tax Rate")
 
-	fmt.Print("Revenue: ")
-	fmt.Scan(&revenue)
-
-	fmt.Print("Expenses: ")
-	fmt.Scan(&expenses)
-
-	fmt.Print("Tax Rate: ")
-	fmt.Scan(&taxRate)
-
-	// Earning before tax
-	ebt := revenue - expenses
-
-	// Profit
-	profit := ebt * (1 - taxRate/100)
-
-	// Ratio
-	ratio := ebt / profit
-
-	// output
-	fmt.Printf("Earning before tax: %.2f.\nProfit: %.2f.\nRatio: %.2f.\n", ebt, profit, ratio)
+	utils.CalclulateValues(revenue, expenses, taxRate)
 
 }
