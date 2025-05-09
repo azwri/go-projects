@@ -1,0 +1,3 @@
+module github.com/azwri/go-projects/bank-app
+
+go 1.23.4
